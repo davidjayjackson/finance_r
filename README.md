@@ -16,6 +16,7 @@ R project for tracking, analyzing, and estimating dividend income from a three-E
 finance_r/
 ├── grab_stock_data.R              # Fetch OHLCV data and populate database
 ├── income_analysis.R              # Price analysis, VWAP bands, plot generation
+├── save_income_plots.R            # Generate income estimate bar chart PNGs
 ├── income_eatimates.qmd           # Equal-weighted income estimate report
 ├── income_eatimates_percents.qmd  # Allocation-weighted income estimate report
 ├── investment.duckdb              # Local DuckDB database
@@ -59,6 +60,22 @@ Rscript income_analysis.R
 | `jepi_vwap.png` | JEPI Close, VWAP, +2 SD, −2 SD bands |
 | `qyld_vwap.png` | QYLD Close, VWAP, +2 SD, −2 SD bands |
 | `schd_vwap.png` | SCHD Close, VWAP, +2 SD, −2 SD bands |
+
+### `save_income_plots.R`
+Fetches live prices and trailing 12-month dividends via `quantmod` for the $300,000 allocation-weighted portfolio, then saves four bar chart PNGs to disk.
+
+```r
+Rscript save_income_plots.R
+```
+
+**Generated plots:**
+
+| File | Contents |
+|------|----------|
+| `income_percent.png` | Portfolio allocation by ticker (%) |
+| `income_invested.png` | Dollars invested per ticker |
+| `income_annual.png` | Estimated annual dividend income per ticker |
+| `income_monthly.png` | Estimated monthly dividend income per ticker |
 
 ### `income_eatimates.qmd`
 Quarto report estimating dividend income for a **$150,000 equal-weighted** portfolio. Fetches live prices and trailing 12-month dividends via `tidyquant`.
