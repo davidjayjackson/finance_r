@@ -94,6 +94,17 @@ install.packages(c("quantmod", "tidyquant", "tidyverse", "dplyr",
                    "ggplot2", "zoo", "DBI", "duckdb", "lubridate"))
 ```
 
+## Rolling Mean Plots (2025-04-28 onward)
+
+### JEPI
+![JEPI Rolling Means](jepi_plot.png)
+
+### QYLD
+![QYLD Rolling Means](qyld_plot.png)
+
+### SCHD
+![SCHD Rolling Means](schd_plot.png)
+
 ## VWAP Plots (2026-01-01 onward)
 
 ### JEPI
