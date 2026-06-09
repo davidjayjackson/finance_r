@@ -94,6 +94,20 @@ install.packages(c("quantmod", "tidyquant", "tidyverse", "dplyr",
                    "ggplot2", "zoo", "DBI", "duckdb", "lubridate"))
 ```
 
+## Income Estimates ($300K Portfolio, 40/35/25 Allocation)
+
+### Portfolio Allocation
+![Allocation](income_percent.png)
+
+### Dollars Invested
+![Invested](income_invested.png)
+
+### Estimated Annual Income
+![Annual Income](income_annual.png)
+
+### Estimated Monthly Income
+![Monthly Income](income_monthly.png)
+
 ## Rolling Mean Plots (2025-04-28 onward)
 
 ### JEPI
