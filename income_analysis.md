@@ -1,6 +1,6 @@
 ---
 title: "Income ETF Analysis"
-date: "2026-06-08"
+date: "2026-06-09"
 ---
 
 
@@ -44,6 +44,26 @@ High-yield covered call strategy on the NASDAQ 100. Portfolio allocation: **35%*
 Tracks high-dividend U.S. equities. Portfolio allocation: **25%**.
 
 ![](schd_plot.png)
+<div style="page-break-before: always;"></div>
+
+## JEPI — VWAP & ±2 Standard Deviation Bands
+20-day rolling VWAP based on Typical Price × Volume. Bands show ±2 SD of Typical Price.
+
+![](jepi_vwap.png)
+
+<div style="page-break-before: always;"></div>
+
+## QYLD — VWAP & ±2 Standard Deviation Bands
+20-day rolling VWAP based on Typical Price × Volume. Bands show ±2 SD of Typical Price.
+
+![](qyld_vwap.png)
+
+<div style="page-break-before: always;"></div>
+
+## SCHD — VWAP & ±2 Standard Deviation Bands
+20-day rolling VWAP based on Typical Price × Volume. Bands show ±2 SD of Typical Price.
+
+![](schd_vwap.png)
 
 
 

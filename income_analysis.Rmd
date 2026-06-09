@@ -1,9 +1,9 @@
-#' ---
-#' title: "Income ETF Analysis"
-#' date: "`r Sys.Date()`"
-#' ---
+---
+title: "Income ETF Analysis"
+date: "`r Sys.Date()`"
+---
 
-#+ setup, echo=FALSE, message=FALSE, warning=FALSE
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 library(dplyr)
 library(ggplot2)
 # library(RMariaDB)
@@ -12,7 +12,8 @@ library(zoo)
 library(duckdb)
 rm(list=ls())
 
-#+ connect, echo=FALSE, message=FALSE, warning=FALSE
+```
+```{r connect, echo=FALSE, message=FALSE, warning=FALSE}
 # con <- dbConnect(
 #   MariaDB(),
 #   host     = "localhost",
@@ -43,9 +44,11 @@ stocks_all <- stocks_all |>
 dbWriteTable(db, "income", stocks_all, overwrite = TRUE)
 
 stocks <- stocks_all |> filter(Date >= as.Date("2025-04-28"))
+```
 
-#' ## Portfolio Summary
-#+ summary, echo=FALSE, message=FALSE, warning=FALSE
+## Portfolio Summary
+
+```{r summary, echo=FALSE, message=FALSE, warning=FALSE}
 tapply(stocks$Close, stocks$Ticker, summary)
 
 plot_etf <- function(data, ticker, title) {
@@ -88,7 +91,8 @@ plot_vwap <- function(data, ticker, title) {
     )
 }
 
-#+ plots, echo=FALSE, message=FALSE, warning=FALSE
+```
+```{r plots, echo=FALSE, message=FALSE, warning=FALSE}
 p1 <- plot_etf(stocks, "JEPI", "JEPI — Close Price & Rolling Means")
 p2 <- plot_etf(stocks, "QYLD", "QYLD — Close Price & Rolling Means")
 p3 <- plot_etf(stocks, "SCHD", "SCHD — Close Price & Rolling Means")
@@ -104,48 +108,50 @@ p6 <- plot_vwap(stocks, "SCHD", "SCHD — VWAP (20-Day) & ±2 SD Bands")
 save_plot(p4, "jepi_vwap.png")
 save_plot(p5, "qyld_vwap.png")
 save_plot(p6, "schd_vwap.png")
+```
 
-#' <div style="page-break-before: always;"></div>
-#'
-#' ## JPMorgan Equity Premium Income ETF — JEPI (40%)
-#' Tracks equity income with a covered call overlay. Portfolio allocation: **40%**.
-#'
-#' ![](jepi_plot.png)
-#'
-#' <div style="page-break-before: always;"></div>
-#'
-#' ## Global X NASDAQ 100 Covered Call ETF — QYLD (35%)
-#' High-yield covered call strategy on the NASDAQ 100. Portfolio allocation: **35%**.
-#'
-#' ![](qyld_plot.png)
-#'
-#' <div style="page-break-before: always;"></div>
-#'
-#' ## Schwab U.S. Dividend Equity ETF — SCHD (25%)
-#' Tracks high-dividend U.S. equities. Portfolio allocation: **25%**.
-#'
-#' ![](schd_plot.png)
+<div style="page-break-before: always;"></div>
 
-#' <div style="page-break-before: always;"></div>
-#'
-#' ## JEPI — VWAP & ±2 Standard Deviation Bands
-#' 20-day rolling VWAP based on Typical Price × Volume. Bands show ±2 SD of Typical Price.
-#'
-#' ![](jepi_vwap.png)
-#'
-#' <div style="page-break-before: always;"></div>
-#'
-#' ## QYLD — VWAP & ±2 Standard Deviation Bands
-#' 20-day rolling VWAP based on Typical Price × Volume. Bands show ±2 SD of Typical Price.
-#'
-#' ![](qyld_vwap.png)
-#'
-#' <div style="page-break-before: always;"></div>
-#'
-#' ## SCHD — VWAP & ±2 Standard Deviation Bands
-#' 20-day rolling VWAP based on Typical Price × Volume. Bands show ±2 SD of Typical Price.
-#'
-#' ![](schd_vwap.png)
+## JPMorgan Equity Premium Income ETF — JEPI (40%)
+Tracks equity income with a covered call overlay. Portfolio allocation: **40%**.
 
-#+ disconnect, echo=FALSE
+![](jepi_plot.png)
+
+<div style="page-break-before: always;"></div>
+
+## Global X NASDAQ 100 Covered Call ETF — QYLD (35%)
+High-yield covered call strategy on the NASDAQ 100. Portfolio allocation: **35%**.
+
+![](qyld_plot.png)
+
+<div style="page-break-before: always;"></div>
+
+## Schwab U.S. Dividend Equity ETF — SCHD (25%)
+Tracks high-dividend U.S. equities. Portfolio allocation: **25%**.
+
+![](schd_plot.png)
+<div style="page-break-before: always;"></div>
+
+## JEPI — VWAP & ±2 Standard Deviation Bands
+20-day rolling VWAP based on Typical Price × Volume. Bands show ±2 SD of Typical Price.
+
+![](jepi_vwap.png)
+
+<div style="page-break-before: always;"></div>
+
+## QYLD — VWAP & ±2 Standard Deviation Bands
+20-day rolling VWAP based on Typical Price × Volume. Bands show ±2 SD of Typical Price.
+
+![](qyld_vwap.png)
+
+<div style="page-break-before: always;"></div>
+
+## SCHD — VWAP & ±2 Standard Deviation Bands
+20-day rolling VWAP based on Typical Price × Volume. Bands show ±2 SD of Typical Price.
+
+![](schd_vwap.png)
+
+```{r disconnect, echo=FALSE}
 dbDisconnect(db)
+```
+
