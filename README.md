@@ -150,7 +150,10 @@ install.packages(c("quantmod", "tidyquant", "tidyverse", "dplyr",
 ## Typical Workflow
 
 ```
-1. Rscript grab_stock_data.R          # refresh database with latest prices
-2. Rscript income_analysis.R          # recompute VWAP bands, regenerate plots
-3. quarto render income_eatimates_percents.qmd   # update income estimate report
+1. Rscript grab_stock_data.R                 # refresh database with latest prices
+2. Rscript income_analysis.R                 # recompute VWAP bands, regenerate plots
+3. Rscript save_income_plots.R               # regenerate income estimate bar charts
+4. Rscript -e "knitr::spin('income_analysis.R', knit=FALSE); \
+               knitr::knit2html('income_analysis.Rmd', output='income_analysis.html')"
+                                             # render HTML report
 ```
