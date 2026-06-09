@@ -94,6 +94,17 @@ install.packages(c("quantmod", "tidyquant", "tidyverse", "dplyr",
                    "ggplot2", "zoo", "DBI", "duckdb", "lubridate"))
 ```
 
+## VWAP Plots (2026-01-01 onward)
+
+### JEPI
+![JEPI VWAP](jepi_vwap.png)
+
+### QYLD
+![QYLD VWAP](qyld_vwap.png)
+
+### SCHD
+![SCHD VWAP](schd_vwap.png)
+
 ## Typical Workflow
 
 ```
